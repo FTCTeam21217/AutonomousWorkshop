@@ -1,0 +1,444 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+<variables>
+<variable id="!/X}x)BqL5R1781%w?K6">runtime</variable>
+<variable id="Wr*MB[nw6m7{dU8Q7Z;`">FORWARD_SPEED</variable>
+<variable id="Ma@8t%y(Uy3JSrXfj/ca">TURN_SPEED</variable>
+</variables>
+<block type="procedures_defnoreturn" id="OpN8!1beqW{8Bw6M/?m+" deletable="false" x="50" y="50">
+<field name="NAME">runOpMode</field>
+<comment pinned="false" h="45" w="532">This function is executed when this Op Mode is selected from the Driver Station.</comment>
+<statement name="STACK">
+<block type="variables_set" id="lqNBB_WHhI^FBy9)Uk[_">
+<field name="VAR" id="!/X}x)BqL5R1781%w?K6">runtime</field>
+<value name="VALUE">
+<block type="elapsedTime2_create" id="LgGF%:cKBGNcnV0VXOSY"/>
+</value>
+<next>
+<block type="variables_set" id="`OZh2G0h%h/Ge(5SEMy)">
+<field name="VAR" id="Wr*MB[nw6m7{dU8Q7Z;`">FORWARD_SPEED</field>
+<value name="VALUE">
+<block type="math_number" id="[g1|*CRyX(*=u(.^jDG4">
+<field name="NUM">0.6</field>
+</block>
+</value>
+<next>
+<block type="variables_set" id="Lo1V3lkZLpi`3[VT^ZQL">
+<field name="VAR" id="Ma@8t%y(Uy3JSrXfj/ca">TURN_SPEED</field>
+<value name="VALUE">
+<block type="math_number" id="|JCvf%=`CR}{EPPVPj!H">
+<field name="NUM">0.5</field>
+</block>
+</value>
+<next>
+<block type="dcMotor_setProperty_Direction" id="eq?6z=8[X(p{)!kj=ljm">
+<field name="IDENTIFIER">FLDriveAsDcMotor</field>
+<field name="PROP">Direction</field>
+<comment pinned="false" h="103" w="377">You will have to determine which motor to reverse for your robot.  In this example, the right motor was reversed so that positive applied power makes it move the robot in the forward direction.</comment>
+<data>{"IDENTIFIER":"FLDrive"}</data>
+<value name="VALUE">
+<shadow type="dcMotor_typedEnum_direction" id="fA5KX5L@6hypglpOh=^Z">
+<field name="DIRECTION">REVERSE</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setProperty_Direction" id="y2.fBan0_H#Jrh#CexVu">
+<field name="IDENTIFIER">FRDriveAsDcMotor</field>
+<field name="PROP">Direction</field>
+<comment pinned="false" h="103" w="377">You will have to determine which motor to reverse for your robot.  In this example, the right motor was reversed so that positive applied power makes it move the robot in the forward direction.</comment>
+<data>{"IDENTIFIER":"FRDrive"}</data>
+<value name="VALUE">
+<shadow type="dcMotor_typedEnum_direction" id="J9Idp_2sylkQzS)Ze}F8">
+<field name="DIRECTION">FORWARD</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setProperty_Direction" id="w040o^D;^2lt4@8=}=U(">
+<field name="IDENTIFIER">BLDriveAsDcMotor</field>
+<field name="PROP">Direction</field>
+<comment pinned="false" h="103" w="377">You will have to determine which motor to reverse for your robot.  In this example, the right motor was reversed so that positive applied power makes it move the robot in the forward direction.</comment>
+<data>{"IDENTIFIER":"BLDrive"}</data>
+<value name="VALUE">
+<shadow type="dcMotor_typedEnum_direction" id="zEZCuP6flEA$xxL-;gQq">
+<field name="DIRECTION">REVERSE</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setProperty_Direction" id="Vwi!Yazn7@n.uUQwAB8e">
+<field name="IDENTIFIER">BRDriveAsDcMotor</field>
+<field name="PROP">Direction</field>
+<comment pinned="false" h="103" w="377">You will have to determine which motor to reverse for your robot.  In this example, the right motor was reversed so that positive applied power makes it move the robot in the forward direction.</comment>
+<data>{"IDENTIFIER":"BRDrive"}</data>
+<value name="VALUE">
+<shadow type="dcMotor_typedEnum_direction" id="Kj9vCzjqNb1T%|u0ZmB4">
+<field name="DIRECTION">FORWARD</field>
+</shadow>
+</value>
+<next>
+<block type="telemetry_addNumericData" id="e4RO3[+?KzVc6f*o6Z}a">
+<value name="KEY">
+<block type="text" id="I;QuG8-S|;rS@gFFxYl*">
+<field name="TEXT">Status</field>
+</block>
+</value>
+<value name="NUMBER">
+<block type="text" id="WoG/5`T||{L)7eSH;_n0">
+<field name="TEXT">Ready to run</field>
+</block>
+</value>
+<next>
+<block type="telemetry_update" id="xCE*JSSBY1j%hvrde[gM">
+<next>
+<block type="linearOpMode_waitForStart" id=":K8^U;yjvZn8aWa~t|#1">
+<next>
+<block type="controls_if" id="V4vcz1^;$q.ACQvg4=Rg">
+<value name="IF0">
+<block type="linearOpMode_opModeIsActive" id="oU;fZnTXMMPG@9M!vA8m"/>
+</value>
+<statement name="DO0">
+<block type="dcMotor_setDualProperty_Number" id="u?%_)=fJ)bn3%lQJ,x,s">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">FLDriveAsDcMotor</field>
+<field name="IDENTIFIER2">FRDriveAsDcMotor</field>
+<data>{"IDENTIFIER1":"FLDrive","IDENTIFIER2":"FRDrive"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id="!?,)NTj}VH3hTJAsL7,G">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="dO*?5;!at:{79B(7UqvX">
+<field name="VAR" id="Ma@8t%y(Uy3JSrXfj/ca">TURN_SPEED</field>
+</block>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="g(ZgqfK(kZW2a`Z$ccv]">
+<field name="NUM">1</field>
+</shadow>
+<block type="math_arithmetic" id="JCZM07$wxTa9-B$QUYvU">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number" id="$NaTqQNwa|Z6rsXv/]co">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="B">
+<shadow type="math_number" id="sE/M%WKajej?Luv%li])">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="*ZJ+:d1NaVb;htnnU8!}">
+<field name="VAR" id="Ma@8t%y(Uy3JSrXfj/ca">TURN_SPEED</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="/@[%iXb(aSy*,Ed/GZpq">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">BLDriveAsDcMotor</field>
+<field name="IDENTIFIER2">BRDriveAsDcMotor</field>
+<data>{"IDENTIFIER1":"BLDrive","IDENTIFIER2":"BRDrive"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id="9a=32;EsTli|ZdlSSGB[">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="^1rV6a$+171O]7hecs,5">
+<field name="VAR" id="Ma@8t%y(Uy3JSrXfj/ca">TURN_SPEED</field>
+</block>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="89uYZ`zKI%~!fSVz`bQn">
+<field name="NUM">1</field>
+</shadow>
+<block type="math_arithmetic" id="nV%Or;!X^c1}CvH[X{:L">
+<field name="OP">MINUS</field>
+<value name="A">
+<shadow type="math_number" id="zWkRgJl*4s74~,,i@5)I">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="B">
+<shadow type="math_number" id="v61Tcy.DrJlzGZ6/8EmD">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="sdWKq=Lj0qj@6;Ef0S^-">
+<field name="VAR" id="Ma@8t%y(Uy3JSrXfj/ca">TURN_SPEED</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block type="elapsedTime2_reset" id=":8A*1JSWjm+HPY10rR+e">
+<value name="ELAPSED_TIME">
+<block type="variables_get" id="0M#mrSVvznQB#l2!|d{z">
+<field name="VAR" id="!/X}x)BqL5R1781%w?K6">runtime</field>
+</block>
+</value>
+<next>
+<block type="controls_whileUntil" id="fr{NcEO@J_Rjw(K~l,Gr">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="logic_operation" id="_FEp/|cI[V.724[X0;s8">
+<field name="OP">AND</field>
+<value name="A">
+<block type="linearOpMode_opModeIsActive" id="7H(:ox?.K@h:%ndQ$RM/"/>
+</value>
+<value name="B">
+<block type="logic_compare" id="!!TL!;fe6oj*eYK]h*1=">
+<field name="OP">LT</field>
+<value name="A">
+<block type="elapsedTime2_getProperty_Number" id="sYqS$kv[iq]I;z?{w1IG">
+<field name="PROP">Seconds</field>
+<value name="ELAPSED_TIME">
+<block type="variables_get" id="eKF@-D{C@KGl~u@*1KB:">
+<field name="VAR" id="!/X}x)BqL5R1781%w?K6">runtime</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<block type="math_number" id="rmY3o:i5s*]7up|`QDr,">
+<field name="NUM">0.72</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block type="telemetry_addNumericData_Number" id="p1PDX/yu:`y;6%d?[qM}">
+<value name="KEY">
+<shadow type="text" id="gcunnBi{%/59.t$Jf6%*">
+<field name="TEXT">Path leg 1 seconds elapsed:</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number" id="bm#,n(vma[^mD+ps=c*u">
+<field name="NUM">123</field>
+</shadow>
+<block type="elapsedTime2_getProperty_Number" id="m0E70hcFmYNDX9;JosQP">
+<field name="PROP">Seconds</field>
+<value name="ELAPSED_TIME">
+<block type="variables_get" id="z0s#;qvOo8UI~pT9ll5F">
+<field name="VAR" id="!/X}x)BqL5R1781%w?K6">runtime</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block type="telemetry_update" id="q6pqcyuT2J,S,S|AkGRt"/>
+</next>
+</block>
+</statement>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="bh}0EQM]qkbqC%;1Ixq:">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">FLDriveAsDcMotor</field>
+<field name="IDENTIFIER2">FRDriveAsDcMotor</field>
+<data>{"IDENTIFIER1":"FLDrive","IDENTIFIER2":"FRDrive"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id="h:0#@DuA(u%4^6ig942M">
+<field name="NUM">0</field>
+</shadow>
+<block type="variables_get" id="T,e)ksdj*^Oo+AXi$8m{">
+<field name="VAR" id="Wr*MB[nw6m7{dU8Q7Z;`">FORWARD_SPEED</field>
+</block>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="onuN-Gg6ZCKXEq^~a;%8">
+<field name="NUM">0</field>
+</shadow>
+<block type="variables_get" id="TU^jU)2{Pb:/W,*l@pJ^">
+<field name="VAR" id="Wr*MB[nw6m7{dU8Q7Z;`">FORWARD_SPEED</field>
+</block>
+</value>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="%OA#mGx~*0;c4[$E#QCY">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">BLDriveAsDcMotor</field>
+<field name="IDENTIFIER2">BRDriveAsDcMotor</field>
+<data>{"IDENTIFIER1":"BLDrive","IDENTIFIER2":"BRDrive"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id="e=jHo,E4Iuh;3-KJNQ(`">
+<field name="NUM">0</field>
+</shadow>
+<block type="variables_get" id="=@W$~3{nSROR|L[[*mkI">
+<field name="VAR" id="Wr*MB[nw6m7{dU8Q7Z;`">FORWARD_SPEED</field>
+</block>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="#z2XOsPhz{3MnRE7+M_7">
+<field name="NUM">0</field>
+</shadow>
+<block type="variables_get" id="Nm%oJ+YQ^/!32@BB~}Z2">
+<field name="VAR" id="Wr*MB[nw6m7{dU8Q7Z;`">FORWARD_SPEED</field>
+</block>
+</value>
+<next>
+<block type="elapsedTime2_reset" id="tvv#G^_7o_hx9$W:%9Qc">
+<value name="ELAPSED_TIME">
+<block type="variables_get" id="NBc*LUgxH,uqWQY)7|c-">
+<field name="VAR" id="!/X}x)BqL5R1781%w?K6">runtime</field>
+</block>
+</value>
+<next>
+<block type="controls_whileUntil" id="T3-FwP8G,?2P6n$1V[gn">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="logic_operation" id="9Ea-3#gjWWVJhA|!2+J=">
+<field name="OP">AND</field>
+<value name="A">
+<block type="linearOpMode_opModeIsActive" id="CPcd|[ssUN*FZG`fToDQ"/>
+</value>
+<value name="B">
+<block type="logic_compare" id="8IlHG{Aib!VNvQ.FXOWl">
+<field name="OP">LT</field>
+<value name="A">
+<block type="elapsedTime2_getProperty_Number" id=",xE:d*M*V%7J2-!-G`ld">
+<field name="PROP">Seconds</field>
+<value name="ELAPSED_TIME">
+<block type="variables_get" id="m1q!p)1KHi}j3TQizuRr">
+<field name="VAR" id="!/X}x)BqL5R1781%w?K6">runtime</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<block type="math_number" id="/qTF~,d5==*f[MGSSq4o">
+<field name="NUM">1</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block type="telemetry_addNumericData_Number" id="IZMKEs@UjoMh{wFH$I7t">
+<value name="KEY">
+<shadow type="text" id="V#8Wj3~2(m#OyNX^9cz1">
+<field name="TEXT">Path leg 2 seconds elapsed:</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="elapsedTime2_getProperty_Number" id="lvQQ#QyaDy[h3jP!#VV6">
+<field name="PROP">Seconds</field>
+<value name="ELAPSED_TIME">
+<block type="variables_get" id="pM?fdp{zN+KzU]@Ja+4w">
+<field name="VAR" id="!/X}x)BqL5R1781%w?K6">runtime</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block type="telemetry_update" id=",h1y[q`*vn~!V#Hf?-+A"/>
+</next>
+</block>
+</statement>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="nBsL=Ha6q=;$[J!3ai*Q">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">BLDriveAsDcMotor</field>
+<field name="IDENTIFIER2">BRDriveAsDcMotor</field>
+<data>{"IDENTIFIER1":"BLDrive","IDENTIFIER2":"BRDrive"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id="8uKB.p[b($cAz}f2tEM{">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="ie{{rXU122z!cT?J+~#q">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="_)3q*DnGCb,B{hSFa~r?">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">FLDriveAsDcMotor</field>
+<field name="IDENTIFIER2">FRDriveAsDcMotor</field>
+<data>{"IDENTIFIER1":"FLDrive","IDENTIFIER2":"FRDrive"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id="e)kw~_zdV@a-xRD8Q:7{">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="~9fyC%}TUt2==AFm+KU;">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block type="telemetry_addNumericData" id="eSfP[]00_SQRZdb9TCgz">
+<value name="KEY">
+<block type="text" id="9=as,E]oKthC7{If_N,E">
+<field name="TEXT">Path</field>
+</block>
+</value>
+<value name="NUMBER">
+<block type="text" id="I%PpD7zI2V,pKhhD*F,F">
+<field name="TEXT">Complete</field>
+</block>
+</value>
+<next>
+<block type="telemetry_update" id="z8m|,NSCqB}eWr02pApe">
+<next>
+<block type="linearOpMode_sleep_Number" id="FnQhd}uXv0T+$)r}8yTh">
+<value name="MILLISECONDS">
+<shadow type="math_number" id=".453;oAW!-%LKRfRA#({">
+<field name="NUM">1000</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</xml>
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<Extra>
+<OpModeMeta flavor="TELEOP" group="" autoTransition="" />
+<Enabled value="true" />
+</Extra>
